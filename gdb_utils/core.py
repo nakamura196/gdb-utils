@@ -53,7 +53,7 @@ class TeiUtils:
         self.df_tag = self.df.sort_values(by="Tag", ascending=True)
 
     def get_javascript(self) -> None:
-        """ Print a JavaScript object containing the tag counts. """
+        """ Generate JavaScript code to check checkboxes in the TEI tag list. """
 
         tags = []
 

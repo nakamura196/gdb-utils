@@ -1,0 +1,4 @@
+nbdev
+bs4
+lxml
+pandas

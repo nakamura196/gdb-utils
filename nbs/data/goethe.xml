@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="tei_all_ja_450.rnc" type="application/relax-ng-compact-syntax"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title xml:lang="ja">東京大学総合図書館所蔵のゲーテ自署付書簡 [Letter] Weimar, 29. Dcbr. 1822 [to L. W. Cramer]（WA IV-36, S. 249対応） </title>
+            <title xml:lang="de">Der Brief von Goethe an Ludwig Wilhelm Cramer vom 29. Dezember 1822 im Besitz der Universitätsbibliothek Tokio </title>
+            <author xml:lang="de" corresp="#viaf24602065">Johann Wolfgang von Goethe</author>
+            <author xml:lang="ja">ヨーハン・ヴォルフガング・フォン・ゲーテ</author>
+            <respStmt>
+               <resp xml:lang="ja">共著及び清書</resp>
+               <persName xml:lang="de">Johann August Friedrich John</persName>
+               <persName xml:lang="ja">ヨーン</persName>
+            </respStmt>
+            <respStmt style="display: none;">
+               <resp xml:lang="ja">TEIエンコーディング</resp>
+               <persName xml:lang="ja">中村美里</persName>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <listWit>
+               <witness xml:id="WA">
+                  <title xml:lang="ja">ヴァイマル版ゲーテ全集（略称WA）</title>
+                  <title xml:lang="de">Goethes Werke. herausgegeben im Auftrage der Großherzogin Sophie von Sachsen</title>
+               </witness>
+               <witness xml:id="UTL">
+                  <title xml:lang="ja">東京大学総合図書館所蔵のゲーテ自署付書簡</title>
+                  <title xml:lang="de">Der Brief von Goethe an Ludwig Wilhelm Cramer vom 29. Dezember 1822 im Besitz der Universitätsbibliothek Tokio</title>
+               </witness>
+            </listWit>
+            <msDesc sameAs="#UTL">
+               <msIdentifier>
+                  <institution>
+                     The University of Tokyo General Library
+                     <address>
+                        <addrLine>7-3-1, Hongo, Bunkyo-ku</addrLine>
+                        <district>Tokyo</district>
+                        <country>Japan</country>
+                     </address>
+                  </institution>
+                  <idno>A100:2070</idno>
+               </msIdentifier>
+               <physDesc>
+                  <objectDesc>
+                     <supportDesc>
+                        <extent>1</extent>
+                        <extent>
+                           <dimensions unit="cm" type="leaf">
+                              <height>25</height>
+                              <width>21</width>
+                           </dimensions>
+                        </extent>
+                     </supportDesc>
+                  </objectDesc>
+                  <handDesc>
+                     <handNote scope="major">
+                        <p>
+                           <persName>ヨーン</persName>
+                        </p>
+                     </handNote>
+                  </handDesc>
+               </physDesc>
+               <history>
+                  <origin>
+                     <p>
+                        <date when="1822-12-28">1822年12月28日</date>に                        <placeName>ヴァイマル</placeName>において、
+                        <persName corresp="#viaf24602065">ゲーテ</persName>が                        <placeName>ヴェツラー</placeName>在住の法律家兼鉱物学者の
+                        <persName>クラーマー</persName>(Ludwig Wilhelm Cramer, 1755-1832)宛書簡の下書き兼草案を彼の秘書<persName>ヨーン</persName>
+                        と作成。
+                     </p>
+                     <p>
+                        <date when="1822-12-29">翌29日</date>付で                        <persName>ヨーン</persName>が清書した正本に                        <persName corresp="#viaf24602065">ゲーテ</persName>が署名。
+                     </p>
+                     <p>
+                        <persName>クラーマー</persName>に発送した。
+                     </p>
+                  </origin>
+                  <provenance>
+                     <p>当該書簡の所有者は和田昭治氏であり、彼の遺言により                        <date when="2003-09">2003年9月</date>に
+                        東京大学総合図書館に寄贈された。
+                     </p>
+                  </provenance>
+               </history>
+            </msDesc>
+            <bibl>
+               <title>Goethes Werke</title>
+               <editor>Hrsg. im Auftrage der Großherzogin Sophie von Sachsen</editor>
+               <publisher>H. Böhlau</publisher>
+               <date>1887-1919</date>
+            </bibl>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+
+         <editorialDecl>
+            <p>
+              このテキストは東京大学総合図書館所蔵のゲーテ自署付書簡に基づいて符号化した上で、ヴァイマル版ゲーテ全集（略称WA）による修正をrdgタグで示している。
+            </p>
+         </editorialDecl>
+         <variantEncoding location="internal" method="parallel-segmentation"/>
+      </encodingDesc>
+      <profileDesc>
+         <correspDesc>
+            <correspAction type="sent">
+               <date>1822-12-29</date>
+               <persName corresp="#viaf24602065">ゲーテ</persName>
+            </correspAction>
+            <correspAction type="received">
+               <location>
+                  <placeName>ヴェツラー</placeName>
+               </location>
+               <persName>クラーマー</persName>
+            </correspAction>
+         </correspDesc>
+
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <opener>
+            <salute>Ew<app>
+               <lem wit="#UTL">:</lem>
+               <rdg wit="#WA">.</rdg>
+            </app>
+            <space/>
+            <app>
+               <lem wit="#UTL">Wohlgebℓ.</lem>
+               <rdg wit="#WA">Wohlgeboren</rdg>
+            </app>
+         </salute>
+      </opener>
+      <div type="letter">
+         <p>
+            <lb style="text-indent:50%"/>
+einen etwas verspäteten Weih=<lb/>
+      nachten zu übersenden und den längst gehegten, neuerlich auch<lb/>
+   wieder ausgesprochenen Wunsch nach einer Beryllstufe<lb/>
+      einigermaßen befriedigen zu können, sende <app>
+   <lem wit="#UTL">gegenwärtiges</lem>
+   <rdg wit="#WA">Gegenwärtiges</rdg>
+</app>
+<lb/>
+      in Hoffnung daß auch die <app>
+<lem wit="#UTL">Bohemika</lem>
+<rdg wit="#WA">Bohemica</rdg>
+</app> noch zu erlangen<lb/>
+      seyn werden.  Mehr sey nicht gesagt<app>
+<lem wit="#UTL">,</lem>
+<rdg wit="#WA"></rdg>
+</app> als die herzlichsten<lb/>
+      Wünsche zum neuen Jahr; auch mir wäre sehr angelegen<app>
+<lem wit="#UTL"></lem>
+<rdg wit="#WA">,</rdg>
+</app>
+<lb/>
+      vaterländische Luft wieder zu schöpfen<app>
+<lem wit="#UTL">,</lem>
+<rdg wit="#WA">;</rdg>
+</app> vielleicht gelingt<lb/>
+   es unvermuthet.</p>
+<p>
+<lb style="text-indent:20%"/>
+Und somit allem Guten empfohlen.</p>
+</div>
+
+<closer>
+<placeName>Weimar</placeName>
+<lb/>
+<date when="1822-12-29">
+<app>
+<lem wit="#UTL">d. 29. Dcbr.</lem>
+<rdg wit="#WA">den 28. December</rdg>
+</app>
+            1822.</date>
+<lb/>
+<salute hand="#viaf24602065">ergebenst</salute>
+<lb/>
+<signed hand="#viaf24602065">JW v Goethe</signed>
+</closer>
+</body>
+<back>
+<listPerson>
+<person xml:id="viaf24602065">
+<persName xml:lang="ja">ゲーテ</persName>
+<idno type="VIAF">24602065</idno>
+</person>
+<person xml:id="john">
+<persName xml:lang="ja">ヨーン</persName>
+</person>
+<person xml:id="cramer">
+<persName xml:lang="ja">クラーマー</persName>
+</person>
+</listPerson>
+</back>
+</text>
+</TEI>

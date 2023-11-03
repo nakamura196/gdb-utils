@@ -51,3 +51,56 @@ class TeiUtils:
         self.df.sort_values(by="Count", ascending=False, inplace=True)
 
         self.df_tag = self.df.sort_values(by="Tag", ascending=True)
+
+    def get_javascript(self) -> None:
+        """ Print a JavaScript object containing the tag counts. """
+
+        tags = []
+
+        for i, row in self.df_tag.iterrows():
+            tags.append(f"\"{row['Tag']}\"")
+
+        javascript_code = f"""
+function checkCheckboxesWithTextValues(textValues) {{
+    // 存在しなかった要素名を格納する配列
+    let notFound = [];
+
+    // 指定されたテキスト値のリストをループ処理
+    textValues.forEach(function(textToMatch) {{
+        // テキストに一致する .mdc-list-item__primary-text 要素を取得
+        let found = false;
+        document.querySelectorAll('.mdc-list-item__primary-text').forEach(function(item) {{
+            if (item.textContent.trim() === textToMatch) {{
+                found = true;
+                let checkbox = item.closest('.mdc-list-item').querySelector('.mdc-checkbox__native-control');
+                if (checkbox) {{
+                    checkbox.checked = true;
+                }}
+            }}
+        }});
+
+        // 要素が見つからなければ notFound 配列に追加
+        if (!found) {{
+            notFound.push(textToMatch);
+        }}
+    }});
+
+    // 存在しなかった要素名を返す
+    return notFound;
+}}
+
+// 指定したいテキスト値のリスト
+const itemsToCheck = [{", ".join(tags)}];
+
+// チェックしたい項目のリストを関数に渡し、存在しなかった項目を取得
+const itemsNotFound = checkCheckboxesWithTextValues(itemsToCheck);
+
+// 存在しなかった項目をコンソールに出力
+if (itemsNotFound.length > 0) {{
+    console.log('These items were not found:', itemsNotFound);
+}} else {{
+    console.log('All items were found and checked.');
+}}
+"""
+
+        return javascript_code

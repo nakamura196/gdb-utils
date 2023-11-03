@@ -8,4 +8,5 @@ d = { 'settings': { 'branch': 'main',
   'syms': { 'gdb_utils.core': { 'gdb_utils.core.TeiUtils': ('core.html#teiutils', 'gdb_utils/core.py'),
                                 'gdb_utils.core.TeiUtils.__init__': ('core.html#teiutils.__init__', 'gdb_utils/core.py'),
                                 'gdb_utils.core.TeiUtils.download': ('core.html#teiutils.download', 'gdb_utils/core.py'),
+                                'gdb_utils.core.TeiUtils.get_javascript': ('core.html#teiutils.get_javascript', 'gdb_utils/core.py'),
                                 'gdb_utils.core.TeiUtils.get_tag_freq': ('core.html#teiutils.get_tag_freq', 'gdb_utils/core.py')}}}

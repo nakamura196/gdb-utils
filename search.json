@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "gdb-utils",
+    "section": "",
+    "text": "TEI/XMLデータを扱う際のツール群です。"
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "gdb-utils",
+    "section": "Install",
+    "text": "Install\npip install git+https://github.com/nakamura196/gdb-utils.git\nfrom gdb_utils.core import *"
+  },
+  {
+    "objectID": "index.html#使い方",
+    "href": "index.html#使い方",
+    "title": "gdb-utils",
+    "section": "使い方",
+    "text": "使い方\n\nclient = TeiUtils()"
+  },
+  {
+    "objectID": "index.html#ダウンロード",
+    "href": "index.html#ダウンロード",
+    "title": "gdb-utils",
+    "section": "ダウンロード",
+    "text": "ダウンロード\n\nurl = \"https://utda.github.io/goethe/data/xml/goethe.xml\"\npath = \"data/goethe.xml\"\nclient.download(url, path)"
+  },
+  {
+    "objectID": "index.html#分析",
+    "href": "index.html#分析",
+    "title": "gdb-utils",
+    "section": "分析",
+    "text": "分析\n\nclient.get_tag_freq(path)\n\n\n頻度の降順で表示\n\nclient.df\n\n\n\n\n\n\n\n\nTag\nCount\n\n\n\n\n8\npersName\n15\n\n\n55\nlb\n13\n\n\n10\np\n9\n\n\n50\napp\n8\n\n\n51\nlem\n8\n\n\n...\n...\n...\n\n\n28\nwidth\n1\n\n\n29\nhandDesc\n1\n\n\n1\nteiHeader\n1\n\n\n31\nhistory\n1\n\n\n30\nhandNote\n1\n\n\n\n\n61 rows × 2 columns\n\n\n\n\n\n名前の昇順で表示\n\nclient.df_tag\n\n\n\n\n\n\n\n\nTag\nCount\n\n\n\n\n0\nTEI\n1\n\n\n18\naddrLine\n1\n\n\n17\naddress\n1\n\n\n50\napp\n8\n\n\n5\nauthor\n2\n\n\n...\n...\n...\n\n\n4\ntitle\n7\n\n\n3\ntitleStmt\n1\n\n\n41\nvariantEncoding\n1\n\n\n28\nwidth\n1\n\n\n13\nwitness\n2\n\n\n\n\n61 rows × 2 columns"
+  },
+  {
+    "objectID": "index.html#romaでタグをチェックするためのjsスクリプトを生成",
+    "href": "index.html#romaでタグをチェックするためのjsスクリプトを生成",
+    "title": "gdb-utils",
+    "section": "RomaでタグをチェックするためのJSスクリプトを生成",
+    "text": "RomaでタグをチェックするためのJSスクリプトを生成\n\nprint(client.get_javascript())\n\n\nfunction checkCheckboxesWithTextValues(textValues) {\n    // 存在しなかった要素名を格納する配列\n    let notFound = [];\n\n    // 指定されたテキスト値のリストをループ処理\n    textValues.forEach(function(textToMatch) {\n        // テキストに一致する .mdc-list-item__primary-text 要素を取得\n        let found = false;\n        document.querySelectorAll('.mdc-list-item__primary-text').forEach(function(item) {\n            if (item.textContent.trim() === textToMatch) {\n                found = true;\n                let checkbox = item.closest('.mdc-list-item').querySelector('.mdc-checkbox__native-control');\n                if (checkbox) {\n                    checkbox.checked = true;\n                }\n            }\n        });\n\n        // 要素が見つからなければ notFound 配列に追加\n        if (!found) {\n            notFound.push(textToMatch);\n        }\n    });\n\n    // 存在しなかった要素名を返す\n    return notFound;\n}\n\n// 指定したいテキスト値のリスト\nconst itemsToCheck = [\"TEI\", \"addrLine\", \"address\", \"app\", \"author\", \"back\", \"bibl\", \"body\", \"closer\", \"correspAction\", \"correspDesc\", \"country\", \"date\", \"dimensions\", \"district\", \"div\", \"editor\", \"editorialDecl\", \"encodingDesc\", \"extent\", \"fileDesc\", \"handDesc\", \"handNote\", \"height\", \"history\", \"idno\", \"institution\", \"lb\", \"lem\", \"listPerson\", \"listWit\", \"location\", \"msDesc\", \"msIdentifier\", \"objectDesc\", \"opener\", \"origin\", \"p\", \"persName\", \"person\", \"physDesc\", \"placeName\", \"profileDesc\", \"provenance\", \"publicationStmt\", \"publisher\", \"rdg\", \"resp\", \"respStmt\", \"salute\", \"signed\", \"sourceDesc\", \"space\", \"supportDesc\", \"teiHeader\", \"text\", \"title\", \"titleStmt\", \"variantEncoding\", \"width\", \"witness\"];\n\n// チェックしたい項目のリストを関数に渡し、存在しなかった項目を取得\nconst itemsNotFound = checkCheckboxesWithTextValues(itemsToCheck);\n\n// 存在しなかった項目をコンソールに出力\nif (itemsNotFound.length &gt; 0) {\n    console.log('These items were not found:', itemsNotFound);\n} else {\n    console.log('All items were found and checked.');\n}"
+  },
+  {
+    "objectID": "index.html#splits-an-xml-file-into-multiple-files-based-on-the-provided-element-and-attributes.",
+    "href": "index.html#splits-an-xml-file-into-multiple-files-based-on-the-provided-element-and-attributes.",
+    "title": "gdb-utils",
+    "section": "Splits an XML file into multiple files based on the provided element and attributes.",
+    "text": "Splits an XML file into multiple files based on the provided element and attributes.\n\npath = \"data/sample.xml\"\noutput = \"data/sample/out.xml\"\nclient.split_xml_file(path, output, \"pb\")\n\n[]\n\n\n[autoreload of gdb_utils.core failed: Traceback (most recent call last):\n  File \"/Users/nakamura/git/gdb/gdb-utils/.venv/lib/python3.9/site-packages/IPython/extensions/autoreload.py\", line 276, in check\n    superreload(m, reload, self.old_objects)\n  File \"/Users/nakamura/git/gdb/gdb-utils/.venv/lib/python3.9/site-packages/IPython/extensions/autoreload.py\", line 500, in superreload\n    update_generic(old_obj, new_obj)\n  File \"/Users/nakamura/git/gdb/gdb-utils/.venv/lib/python3.9/site-packages/IPython/extensions/autoreload.py\", line 397, in update_generic\n    update(a, b)\n  File \"/Users/nakamura/git/gdb/gdb-utils/.venv/lib/python3.9/site-packages/IPython/extensions/autoreload.py\", line 349, in update_class\n    if update_generic(old_obj, new_obj):\n  File \"/Users/nakamura/git/gdb/gdb-utils/.venv/lib/python3.9/site-packages/IPython/extensions/autoreload.py\", line 397, in update_generic\n    update(a, b)\n  File \"/Users/nakamura/git/gdb/gdb-utils/.venv/lib/python3.9/site-packages/IPython/extensions/autoreload.py\", line 309, in update_function\n    setattr(old, name, getattr(new, name))\nValueError: startElement() requires a code object with 0 free vars, not 1\n]\n\n\n\npath = \"data/sample.xml\"\noutput = \"data/sample2/out.xml\"\nclient.split_xml_file(path, output, \"div\", split_attr=\"type\", split_value=\"sample\")\n\n[]"
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nconvert_xml_encoding\n\n convert_xml_encoding (input_file, output_file)\n\n\nsource\n\n\nXMLBreaker\n\n XMLBreaker (split_element, break_after=1000, split_attr=None,\n             split_value=None, out=None, *args, **kwargs)\n\nInterface for receiving logical document content events.\nThis is the main callback interface in SAX, and the one most important to applications. The order of events in this interface mirrors the order of the information in the document.\n\nsource\n\n\nCycleFile\n\n CycleFile (filename)\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nTeiUtils\n\n TeiUtils ()\n\nUtility class for working with TEI files.\n\nsource\n\n\nTeiUtils.download\n\n TeiUtils.download (url:str, path:str)\n\nDownload a file from a specified URL to a local path.\nArgs: url: The URL from which to download the file. path: The local file path to save the downloaded file.\n\nsource\n\n\nTeiUtils.get_tag_freq\n\n TeiUtils.get_tag_freq (path:str)\n\nRead an XML file from a specified path and count the frequency of each tag.\nThe frequencies are stored in an attribute tag_counts. A sorted DataFrame of tags and counts is stored in df and df_tag.\nArgs: path: The file path of the XML file to parse.\n\nsource\n\n\nTeiUtils.get_javascript\n\n TeiUtils.get_javascript ()\n\nGenerate JavaScript code to check checkboxes in the TEI tag list.\n\nsource\n\n\nTeiUtils.split_xml_file\n\n TeiUtils.split_xml_file (input_file, output_basename, split_element,\n                          break_after=1, split_attr=None,\n                          split_value=None)\n\nSplits an XML file into multiple files based on the provided element and attributes.\nArgs:\ninput_file (str): The path to the input XML file.\noutput_basename (str): The base name for the output files.\nsplit_element (str): The name of the element to split on.\nbreak_after (int): The number of occurrences of the element after which to split.\nsplit_attr (str): Optional. The attribute name to further refine the split condition.\nsplit_value (str): Optional. The attribute value to further refine the split condition."
+  }
+]

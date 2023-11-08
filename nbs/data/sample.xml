@@ -1,0 +1,21 @@
+<text>
+    <pb n="1"/>
+    <div type="sample">
+        <head>1.1</head>
+        <div>1.1.1</div>
+
+        <pb n="2"/>
+
+        <div>1.1.2</div>
+    </div>
+
+    <pb n="3"/>
+
+    <div type="sample">
+        <head>1.2</head>
+        <div>1.2.1</div>
+        <div>1.2.2</div>
+
+        <pb n="4"/>
+    </div>
+</text>
